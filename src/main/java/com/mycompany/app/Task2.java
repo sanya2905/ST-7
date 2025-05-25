@@ -1,29 +1,25 @@
 package com.mycompany.app;
 
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Task2 {
-    public static void main(String[] args) {
+    public static void execute(WebDriver webDriver) {
         try {
-            URL url = new URL("https://api.ipify.org/?format=json");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+            webDriver.get("https://api.ipify.org/?format=json");
+            WebElement elem = webDriver.findElement(By.tagName("pre"));
 
-            Reader reader = new InputStreamReader(connection.getInputStream());
+            String jsonStr = elem.getText();
             JSONParser parser = new JSONParser();
-            JSONObject json = (JSONObject) parser.parse(reader);
+            JSONObject obj = (JSONObject) parser.parse(jsonStr);
 
-            String ip = (String) json.get("ip");
-            System.out.println("Ваш IP-адрес: " + ip);
-
+            String ip = (String) obj.get("ip");
+            System.out.println("Client IPv4 Address: " + ip);
         } catch (Exception e) {
-            System.out.println("Ошибка:");
+            System.out.println("Error in Task2");
             System.out.println(e.toString());
         }
     }
