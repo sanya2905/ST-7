@@ -14,11 +14,9 @@ public class Task2 {
             URL url = new URL("https://api.ipify.org/?format=json");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-
             Reader reader = new InputStreamReader(connection.getInputStream());
             JSONParser parser = new JSONParser();
             JSONObject json = (JSONObject) parser.parse(reader);
-
             String ip = (String) json.get("ip");
             System.out.println("Ваш IP-адрес: " + ip);
 
