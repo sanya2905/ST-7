@@ -28,7 +28,6 @@ public class Task3 {
             }
             File file = new File("result/forecast.txt");
             PrintWriter writer = new PrintWriter(new FileWriter(file));
-
             String header = String.format("%-5s %-20s %-15s %-15s%n", "№", "Дата/время", "Температура (°C)", "Осадки (мм)");
             String separator = "----------------------------------------------------------------------------";
             System.out.print(header);
@@ -45,6 +44,7 @@ public class Task3 {
                 System.out.print(row);
                 writer.print(row);
             }
+
             writer.close();
             System.out.println("\nТаблица сохранена в файл: result/forecast.txt");
 
