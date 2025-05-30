@@ -19,7 +19,6 @@ public class Task2 {
             JSONObject json = (JSONObject) parser.parse(reader);
             String ip = (String) json.get("ip");
             System.out.println("Ваш IP-адрес: " + ip);
-
         } catch (Exception e) {
             System.out.println("Ошибка:");
             System.out.println(e.toString());
