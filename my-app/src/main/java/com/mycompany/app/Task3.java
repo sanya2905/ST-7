@@ -46,7 +46,6 @@ public class Task3 {
             }
             writer.close();
             System.out.println("\nТаблица сохранена в файл: result/forecast.txt");
-
         } catch (Exception e) {
             System.out.println("Ошибка:");
             System.out.println(e.toString());
